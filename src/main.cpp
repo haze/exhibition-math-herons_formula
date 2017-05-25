@@ -23,7 +23,9 @@ std::tuple<std::string, double, double, double, double> prompt_sides() {
     sides[i] = std::stof(temp);
   }
   double s = (sides[0] + sides[1] + sides[2]) / 2;
-  double area = sqrt( s * (s-sides[0]) * (s-sides[1]) * (s-sides[2]) );
+  std::cout << "semiperim: " << s << std::endl;
+  std::cout << "before sqrt: " << s * (s - sides[0]) * (s - sides[1]) * (s - sides[2]) << std::endl;
+  double area = sqrt( s * (s - sides[0]) * (s - sides[1]) * (s - sides[2]) );
   return std::make_tuple(unit, sides[0], sides[1], sides[2], area);
 }
 
@@ -36,6 +38,10 @@ void print_trig_tuple(std::tuple<std::string, double, double, double, double> tr
 }
 
 int main(int argc, char ** argv) { 
+  // disable precision
+  std::cout.setf(std::ios::fixed, std::ios::floatfield);
+  std::cout.setf(std::ios::showpoint);
   auto result = prompt_sides();
   print_trig_tuple(result);
+  return EXIT_SUCCESS;
 }

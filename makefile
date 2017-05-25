@@ -4,7 +4,7 @@ HDRS=$(wildcard src/*.hpp)
 OBJS=$(patsubst %.c,%.o,$(SRC))
 
 comp:
-		clang++ -std=c++14 -stdlib=libc++ -O2 -o herons-formula $(SRCS)
+		clang++ -std=c++14 -stdlib=libc++ -O3 -o herons-formula $(SRCS)
 
 run:
 		./herons-formula
